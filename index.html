@@ -19,34 +19,38 @@
       </header>
 
       <section class="board" aria-label="Estados de la cola">
-        <article class="queue-column">
+        <article class="queue-column" data-status="pending">
           <header class="queue-column__header">
             <h2>Pendiente</h2>
             <p>Trabajos recibidos que todavía no fueron procesados.</p>
           </header>
+          <div class="queue-column__jobs" data-jobs-list></div>
         </article>
 
-        <article class="queue-column">
+        <article class="queue-column" data-status="processing">
           <header class="queue-column__header">
             <h2>En proceso</h2>
             <p>Trabajo tomado por el sistema para ser ejecutado.</p>
           </header>
+          <div class="queue-column__jobs" data-jobs-list></div>
         </article>
 
-        <article class="queue-column">
+        <article class="queue-column" data-status="completed">
           <header class="queue-column__header">
             <h2>Completado</h2>
             <p>Trabajos procesados correctamente.</p>
           </header>
+          <div class="queue-column__jobs" data-jobs-list></div>
         </article>
 
-        <article class="queue-column">
+        <article class="queue-column" data-status="failed">
           <header class="queue-column__header">
             <h2>Fallido</h2>
             <p>
               Trabajos que no pudieron completarse y pueden requerir revisión.
             </p>
           </header>
+          <div class="queue-column__jobs" data-jobs-list></div>
         </article>
       </section>
     </main>
