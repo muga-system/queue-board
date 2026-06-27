@@ -8,31 +8,41 @@
   </head>
 
   <body>
-    <main>
-      <header>
-        <p>muga.dev / sistemas mínimos 02</p>
+    <main class="app">
+      <header class="app-header">
+        <p class="eyebrow">muga.dev / sistemas mínimos 02</p>
         <h1>Queue Board</h1>
-        <p>Antes de ejecutar más rápido, conviene ordenar mejor.</p>
+        <p class="intro">Antes de ejecutar más rápido, conviene ordenar mejor.</p>
       </header>
 
-      <section>
-        <h2>Pendiente</h2>
-        <p>Trabajos recibidos que todavía no fueron procesados.</p>
-      </section>
+      <section class="board" aria-label="Estados de la cola">
+        <article class="queue-column">
+          <header class="queue-column__header">
+            <h2>Pendiente</h2>
+            <p>Trabajos recibidos que todavía no fueron procesados.</p>
+          </header>
+        </article>
 
-      <section>
-        <h2>En proceso</h2>
-        <p>Trabajo tomado por el sistema para ser ejecutado.</p>
-      </section>
+        <article class="queue-column">
+          <header class="queue-column__header">
+            <h2>En proceso</h2>
+            <p>Trabajo tomado por el sistema para ser ejecutado.</p>
+          </header>
+        </article>
 
-      <section>
-        <h2>Completado</h2>
-        <p>Trabajos procesados correctamente.</p>
-      </section>
+        <article class="queue-column">
+          <header class="queue-column__header">
+            <h2>Completado</h2>
+            <p>Trabajos procesados correctamente.</p>
+          </header>
+        </article>
 
-      <section>
-        <h2>Fallido</h2>
-        <p>Trabajos que no pudieron completarse y pueden requerir revisión.</p>
+        <article class="queue-column">
+          <header class="queue-column__header">
+            <h2>Fallido</h2>
+            <p>Trabajos que no pudieron completarse y pueden requerir revisión.</p>
+          </header>
+        </article>
       </section>
     </main>
   </body>
