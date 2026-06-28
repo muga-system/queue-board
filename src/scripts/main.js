@@ -1,14 +1,14 @@
 const queueStates = {
-  pending: "Pendiente",
-  processing: "Procesamiento",
-  completed: "Completado",
-  failed: "Fallido",
+  pending: "pending",
+  processing: "processing",
+  completed: "completed",
+  failed: "failed",
 };
 
 const jobs = [
   {
     id: 1,
-    title: "Enviar Comprovante",
+    title: "Enviar comprobante",
     priority: 2,
     status: queueStates.pending,
   },
@@ -46,14 +46,14 @@ function createJobElement(job) {
   jobElement.classList.add("job-card");
 
   jobElement.innerHTML = `<h3>${job.title}</h3>
-  <p>Prioriddad ${job.priority}</p>`;
+  <p>Prioridad ${job.priority}</p>`;
   return jobElement;
 }
 
 function renderJobs() {
-  const colums = document.querySelectorAll("[data-status]");
+  const columns = document.querySelectorAll("[data-status]");
 
-  colums.forEach((column) => {
+  columns.forEach((column) => {
     const status = column.dataset.status;
     const jobsList = column.querySelector("[data-jobs-list]");
     const jobsByStatus = getSortedJobsByStatus(status);
