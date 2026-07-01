@@ -5,6 +5,10 @@
   --color-muted: #8f9aaa;
   --color-border: #263244;
   --color-accent: #5da9ff;
+  --color-pending: #5da9ff;
+  --color-processing: #ffd17c;
+  --color-completed: #5fd3a2;
+  --color-failed: #d66f7a;
 
   font-family:
     Inter,
@@ -88,10 +92,28 @@ p {
   padding: 20px;
   background: var(--color-surface);
   border-right: 1px solid var(--color-border);
+  border-top: 3px solid var(--column-accent, var(--color-border));
+  position: relative;
 }
 
 .queue-column:last-child {
   border-right: 0;
+}
+
+.queue-column[data-status="pending"] {
+  --column-accent: var(--color-pending);
+}
+
+.queue-column[data-status="processing"] {
+  --column-accent: var(--color-processing);
+}
+
+.queue-column[data-status="completed"] {
+  --column-accent: var(--color-completed);
+}
+
+.queue-column[data-status="failed"] {
+  --column-accent: var(--color-failed);
 }
 
 .queue-column__header {
