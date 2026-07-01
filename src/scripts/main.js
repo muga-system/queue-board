@@ -24,11 +24,19 @@ const jobs = [
     priority: 3,
     status: queueStates.processing,
   },
+  {
+    id: 4,
+    title: "Connfirmaar pago",
+    priority: 2,
+    status: queueStates.completed,
+  },
+  {
+    id: 5,
+    title: "Reintentar envío de email",
+    priority: 1,
+    status: queueStates.failed,
+  },
 ];
-
-const pendingJobs = jobs
-  .filter((job) => job.status === queueStates.pending)
-  .sort((firstJob, secondJob) => firstJob.priority - secondJob.priority);
 
 function getSortedJobsByStatus(status) {
   const jobsByStatus = jobs.filter((job) => job.status === status);
