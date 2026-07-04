@@ -147,7 +147,10 @@ p {
   line-height: 1.35;
 }
 
-.job-card p {
+.job-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
   font-size: 0.8125rem;
 }
 

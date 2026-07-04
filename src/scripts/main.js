@@ -38,6 +38,16 @@ const jobs = [
   },
 ];
 
+function getPriorityLabel(priority) {
+  const priorityLabels = {
+    1: "Alta",
+    2: "Media",
+    3: "Baja",
+  };
+
+  return priorityLabels[priority] ?? "Sin definir";
+}
+
 function getSortedJobsByStatus(status) {
   const jobsByStatus = jobs.filter((job) => job.status === status);
 
@@ -52,9 +62,16 @@ function getSortedJobsByStatus(status) {
 function createJobElement(job) {
   const jobElement = document.createElement("article");
   jobElement.classList.add("job-card");
+  jobElement.dataset.priority = String(job.priority);
 
-  jobElement.innerHTML = `<h3>${job.title}</h3>
-  <p>Prioridad ${job.priority}</p>`;
+  jobElement.innerHTML = `
+  <h3>${job.title}</h3>
+  <p class="job-card__meta">
+    <span>Prioridad ${job.priority}</span>
+    <span>${getPriorityLabel(job.priority)}</span>
+  </p>
+`;
+
   return jobElement;
 }
 
