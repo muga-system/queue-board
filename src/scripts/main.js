@@ -75,17 +75,68 @@ function createPendingJob(title, priority) {
   return newJob;
 }
 
+function getJobActions(job) {
+  const actionByStatus = {
+    [queueStates.pending]: [
+      {
+        label: "Procesar",
+        nextStatus: queueStates.processing,
+      },
+    ],
+    [queueStates.processing]: [
+      {
+        label: "Completar",
+        nextStatus: queueStates.completed,
+      },
+      {
+        label: "Fallar",
+        nextStatus: queueStates.failed,
+      },
+    ],
+    [queueStates.failed]: [
+      {
+        label: "Reintentar",
+        nextStatus: queueStates.pending,
+      },
+    ],
+    [queueStates.completed]: [],
+  };
+
+  return actionByStatus[job.status] ?? [];
+}
+
 function createJobElement(job) {
   const jobElement = document.createElement("article");
   jobElement.classList.add("job-card");
   jobElement.dataset.priority = String(job.priority);
+  jobElement.dataset.jobId = String(job.id);
 
-  jobElement.innerHTML = `
+  const actions = getJobActions(job);
+
+  const actionsMarkup = actions
+    .map(
+      (action) => `
+      <button
+        class="job-card__button"
+        type="button"
+        data-next-status="${action.nextStatus}"
+      >
+        ${action.label}
+      </button>
+    `,
+    )
+    .join("");
+
+ jobElement.innerHTML = `
   <h3>${job.title}</h3>
   <p class="job-card__meta">
     <span>Prioridad ${job.priority}</span>
     <span>${getPriorityLabel(job.priority)}</span>
   </p>
+
+  <div class="job-card__actions">
+    ${actionsMarkup}
+  </div>
 `;
 
   return jobElement;
