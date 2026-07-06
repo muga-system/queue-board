@@ -81,6 +81,60 @@ p {
   font-size: 1.125rem;
 }
 
+.job-form-section {
+  display: grid;
+  grid-template-columns: minmax (0, 1fr) minmax (320px, 520px);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.job-form-section h2 {
+  margin-bottom: 8px;
+}
+
+.job-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.job-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+}
+
+.job-form input,
+.job-form select,
+.job-form button {
+  min-height: 42px;
+  border-radius: 0;
+  font: inherit;
+}
+
+.job-form input,
+.job-form select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: #0b111c;
+  color: var(--color-text);
+  padding: 0 12px;
+}
+
+.job-form button {
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  padding: 0 14px;
+  cursor: pointer;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -165,6 +219,14 @@ p {
 
   .queue-column:nth-child(-n + 2) {
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .job-form-section {
+    grid-template-columns: 1fr;
+  }
+
+  .job-form {
+    grid-template-columns: 1fr;
   }
 }
 

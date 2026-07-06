@@ -18,6 +18,36 @@
         </p>
       </header>
 
+      <section class="job-form-section" aria-labelledby="job-form-title">
+        <div>
+          <h2 id="job-form-title">Nuevo trabajo</h2>
+          <p>Los trabajos nuevos entran primero como pendientes.</p>
+        </div>
+
+        <form class="job-form" data-job-form>
+          <label>
+            Trabajo
+            <input
+              type="text"
+              name="title"
+              placeholder="Ej: Validar solicitud"
+              autocomplete="off"
+            />
+          </label>
+
+          <label>
+            Prioridad
+            <select name="priority">
+              <option value="1">Alta</option>
+              <option value="2">Media</option>
+              <option value="3">Baja</option>
+            </select>
+          </label>
+
+          <button type="submit">Agregar trabajo</button>
+        </form>
+      </section>
+
       <section class="board" aria-label="Estados de la cola">
         <article class="queue-column" data-status="pending">
           <header class="queue-column__header">
