@@ -38,6 +38,8 @@ const jobs = [
   },
 ];
 
+let nextJobId = Math.max(...jobs.map((job) => job.id)) + 1;
+
 function getPriorityLabel(priority) {
   const priorityLabels = {
     1: "Alta",
@@ -57,6 +59,20 @@ function getSortedJobsByStatus(status) {
   return jobsByStatus.sort(
     (firstJob, secondJob) => firstJob.priority - secondJob.priority,
   );
+}
+
+function createPendingJob(title, priority) {
+  const newJob = {
+    id: nextJobId,
+    title,
+    priority,
+    status: queueStates.pending,
+  };
+
+  jobs.push(newJob);
+  nextJobId += 1;
+
+  return newJob;
 }
 
 function createJobElement(job) {
@@ -91,6 +107,29 @@ function renderJobs() {
     });
   });
 }
+
+function handleJobFormSubmit(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  const title = formData.get("title").trim();
+  const priority = Number(formData.get("priority"));
+
+  if (!title) {
+    return;
+  }
+
+  createPendingJob(title, priority);
+  renderJobs();
+
+  form.reset();
+}
+
+const jobForm = document.querySelector("[data-job-form]");
+
+jobForm.addEventListener("submit", handleJobFormSubmit);
 
 renderJobs();
 
