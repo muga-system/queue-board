@@ -124,6 +124,26 @@ function getJobActions(job) {
   return actionByStatus[job.status] ?? [];
 }
 
+function getEmptyStateMessage(status) {
+  const messagesByStatus = {
+    [queueStates.pending]: "No hay trabajos pendientes.",
+    [queueStates.processing]: "No hay trabajos en proceso.",
+    [queueStates.completed]: "No hay trabajos completados.",
+    [queueStates.failed]: "No hay trabajos fallidos.",
+  };
+
+  return messagesByStatus[status] ?? "No hay trabajos.";
+}
+
+function createEmptyStateElement(status) {
+  const emptyStateElement = document.createElement("p");
+
+  emptyStateElement.classList.add("empty-state");
+  emptyStateElement.textContent = getEmptyStateMessage(status);
+
+  return emptyStateElement;
+}
+
 function createJobElement(job) {
   const jobElement = document.createElement("article");
   jobElement.classList.add("job-card");
@@ -170,6 +190,12 @@ function renderJobs() {
     const jobsByStatus = getSortedJobsByStatus(status);
 
     jobsList.innerHTML = "";
+
+    if (jobsByStatus.length === 0) {
+      const emptyStateElement = createEmptyStateElement(status);
+      jobsList.appendChild(emptyStateElement);
+      return;
+    }
 
     jobsByStatus.forEach((job) => {
       const jobElement = createJobElement(job);
