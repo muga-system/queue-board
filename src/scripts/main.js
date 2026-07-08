@@ -75,6 +75,25 @@ function createPendingJob(title, priority) {
   return newJob;
 }
 
+function changeJobStatus(jobId, nextStatus) {
+  const job = jobs.find((currentJob) => currentJob.id === jobId);
+
+  if (!job) {
+    return;
+  }
+
+  const allowedActions = getJobActions(job);
+  const canMoveToNextStatus = allowedActions.some(
+    (action) => action.nextStatus === nextStatus,
+  );
+
+  if (!canMoveToNextStatus) {
+    return;
+  }
+
+  job.status = nextStatus;
+}
+
 function getJobActions(job) {
   const actionByStatus = {
     [queueStates.pending]: [
@@ -127,7 +146,7 @@ function createJobElement(job) {
     )
     .join("");
 
- jobElement.innerHTML = `
+  jobElement.innerHTML = `
   <h3>${job.title}</h3>
   <p class="job-card__meta">
     <span>Prioridad ${job.priority}</span>
@@ -178,9 +197,31 @@ function handleJobFormSubmit(event) {
   form.reset();
 }
 
+function handleBoardClick(event) {
+  const actionButton = event.target.closest("[data-next-status]");
+
+  if (!actionButton) {
+    return;
+  }
+
+  const jobElement = actionButton.closest("[data-job-id]");
+
+  if (!jobElement) {
+    return;
+  }
+
+  const jobId = Number(jobElement.dataset.jobId);
+  const nextStatus = actionButton.dataset.nextStatus;
+
+  changeJobStatus(jobId, nextStatus);
+  renderJobs();
+}
+
 const jobForm = document.querySelector("[data-job-form]");
+const board = document.querySelector(".board");
 
 jobForm.addEventListener("submit", handleJobFormSubmit);
+board.addEventListener("click", handleBoardClick);
 
 renderJobs();
 
