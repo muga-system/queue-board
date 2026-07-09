@@ -227,6 +227,26 @@ p {
   cursor: pointer;
 }
 
+.job-card__button[data-next-status="processing"] {
+  border-color: var(--color-processing);
+  color: var(--color-processing);
+}
+
+.job-card__button[data-next-status="completed"] {
+  border-color: var(--color-completed);
+  color: var(--color-completed);
+}
+
+.job-card__button[data-next-status="failed"] {
+  border-color: var(--color-failed);
+  color: var(--color-failed);
+}
+
+.job-card__button[data-next-status="pending"] {
+  border-color: var(--color-pending);
+  color: var(--color-pending);
+}
+
 .empty-state {
   padding: 14px;
   border: 1px dashed var(--color-border);
