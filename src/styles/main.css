@@ -178,6 +178,16 @@ p {
   margin-bottom: 8px;
 }
 
+.queue-column__count {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--column-accent, var(--color-muted));
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .queue-column__header p {
   font-size: 0.875rem;
 }

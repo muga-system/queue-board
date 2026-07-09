@@ -188,6 +188,12 @@ function renderJobs() {
     const status = column.dataset.status;
     const jobsList = column.querySelector("[data-jobs-list]");
     const jobsByStatus = getSortedJobsByStatus(status);
+    const columnCount = column.querySelector("[data-column-count]");
+
+    columnCount.textContent =
+      jobsByStatus.length === 1
+        ? "1 trabajo"
+        : `${jobsByStatus.length} trabajos`;
 
     jobsList.innerHTML = "";
 
