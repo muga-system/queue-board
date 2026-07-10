@@ -264,9 +264,11 @@ function handleBoardClick(event) {
 const jobForm = document.querySelector("[data-job-form]");
 const board = document.querySelector(".board");
 
+if (!jobForm || !board) {
+  throw new Error("No se encontraron los elementos base de Queue Board.");
+}
+
 jobForm.addEventListener("submit", handleJobFormSubmit);
 board.addEventListener("click", handleBoardClick);
 
 renderJobs();
-
-console.log("Trabajos renderizados:", jobs);
