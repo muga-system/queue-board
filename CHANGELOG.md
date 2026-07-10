@@ -39,6 +39,7 @@ El formato sigue una estructura simple y manual.
 - Mensajes de estado vacío por columna.
 - Estados de foco para inputs, select y botones.
 - Ajustes responsive básicos para pantallas chicas.
+- Demo pública publicada en GitHub Pages.
 
 ### Decisiones técnicas
 
@@ -54,11 +55,12 @@ El formato sigue una estructura simple y manual.
 - Estados internos técnicos separados de los textos visibles.
 - Interfaz dark técnica con acento azul frío.
 - Bordes rectos, sin gradientes ni sombras decorativas.
+- Deploy estático mediante GitHub Pages desde la rama `main`.
 
 ### Pendiente para cierre de `v0.1.0`
 
 - Revisión final del README.
 - Revisión final del changelog.
-- Deploy público.
+- Verificación final del deploy público.
 - Tag de versión `v0.1.0`.
 - Preparación de publicación asociada.
