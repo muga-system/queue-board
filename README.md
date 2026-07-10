@@ -166,6 +166,13 @@ queue-board/
 
 ---
 
+## Demo
+
+La herramienta está publicada en GitHub Pages:
+
+https://muga-system.github.io/queue-board/
+
+
 ## Uso local
 
 Abrir el archivo `index.html` directamente en el navegador.
