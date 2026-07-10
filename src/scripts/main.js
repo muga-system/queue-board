@@ -214,12 +214,23 @@ function handleJobFormSubmit(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
+  const formError = form.querySelector("[data-form-error]");
   const formData = new FormData(form);
 
   const title = formData.get("title").trim();
   const priority = Number(formData.get("priority"));
 
+  const validPriorities = [1, 2, 3];
+
+  formError.textContent = "";
+
   if (!title) {
+    formError.textContent = "Ingresá un nombre para el trabajo.";
+    return;
+  }
+
+  if (!validPriorities.includes(priority)) {
+    formError.textContent = "Seleccioná una prioridad válida.";
     return;
   }
 
@@ -227,6 +238,7 @@ function handleJobFormSubmit(event) {
   renderJobs();
 
   form.reset();
+  form.querySelector("[name='title']").focus();
 }
 
 function handleBoardClick(event) {

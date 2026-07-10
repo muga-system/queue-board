@@ -135,6 +135,13 @@ p {
   cursor: pointer;
 }
 
+.job-form__error {
+  min-height: 1.4em;
+  grid-column: 1 / -1;
+  color: var(--color-failed);
+  font-size: 0.8125rem;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

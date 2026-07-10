@@ -24,7 +24,7 @@
           <p>Los trabajos nuevos entran primero como pendientes.</p>
         </div>
 
-        <form class="job-form" data-job-form>
+        <form class="job-form" data-job-form novalidate>
           <label>
             Trabajo
             <input
@@ -32,6 +32,8 @@
               name="title"
               placeholder="Ej: Validar solicitud"
               autocomplete="off"
+              required
+              maxlength="60"
             />
           </label>
 
@@ -45,6 +47,7 @@
           </label>
 
           <button type="submit">Agregar trabajo</button>
+          <p class="job-form__error" data-form-error aria-live="polite"></p>
         </form>
       </section>
 
