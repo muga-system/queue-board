@@ -329,4 +329,26 @@ p {
   .queue-column:last-child {
     border-bottom: 0;
   }
+
+  .app-header {
+    margin-bottom: 32px;
+  }
+
+  .job-form-section {
+    margin-bottom: 24px;
+    padding: 16px;
+  }
+
+  .job-card__meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .job-card__actions {
+    flex-direction: column;
+  }
+
+  .job-card__button {
+    width: 100%;
+  }
 }
