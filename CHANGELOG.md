@@ -8,6 +8,12 @@ El formato sigue una estructura simple y manual.
 
 ## [Unreleased]
 
+Sin cambios todavía.
+
+---
+
+## [0.1.0] - 2026-07-10
+
 ### Agregado
 
 - Definición inicial del concepto Queue Board.
@@ -56,11 +62,3 @@ El formato sigue una estructura simple y manual.
 - Interfaz dark técnica con acento azul frío.
 - Bordes rectos, sin gradientes ni sombras decorativas.
 - Deploy estático mediante GitHub Pages desde la rama `main`.
-
-### Pendiente para cierre de `v0.1.0`
-
-- Revisión final del README.
-- Revisión final del changelog.
-- Verificación final del deploy público.
-- Tag de versión `v0.1.0`.
-- Preparación de publicación asociada.
